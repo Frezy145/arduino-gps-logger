@@ -31,7 +31,7 @@ pip install pyqt5 pandas geopandas pyserial shapely
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/gps-data-recorder.git
+git clone https://github.com/your-username/arduino-gps-logger.git
 cd gps-data-recorder
 ```
 2. **Connect your Arduino**
