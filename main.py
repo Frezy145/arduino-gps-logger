@@ -286,6 +286,11 @@ class MyApp(QMainWindow, Ui_MainWindow):
 
         """File saving process."""
 
+        # Will not do anything if the device is not connected 
+        if not self.arduino.is_connected:
+
+            return
+
         if len(self.arduino.data) == 1:
 
             self.displayLabel.setText(
@@ -356,6 +361,13 @@ class MyApp(QMainWindow, Ui_MainWindow):
 
         """Initialize everything: clear the data."""
 
+        # Will not do anything if the device is not connected 
+        if not self.arduino.is_connected:
+
+            return
+
+        # Display "No recorded data." and will not do anything if 
+        # there is not any recorded data.
         if len(self.arduino.data) == 1:
 
             self.displayLabel.setText("No recorded data.")
@@ -391,13 +403,19 @@ class MyApp(QMainWindow, Ui_MainWindow):
     def start(self):
         """Start recording."""
 
+        # Should start only if the device is connected.
+        if not self.arduino.is_connected: 
+
+            return
+
         if self.arduino.recording:
 
             self.arduino.recording = False
 
             self.displayLabel.setText(
                 "Recording paused ! \n"
-                "Click on \"Restart\" to restart."
+                "Click on \"Continue\" to continue. \n"
+                "Or click \"Restart\" to restart"
             )
 
             self.startButton.setText("Continue")
